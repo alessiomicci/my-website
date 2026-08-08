@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	entry: CollectionEntry<'projects'>;
+}
+
+const { entry } = Astro.props;
+const { title, role, order, stack, problem, solution, impact } = entry.data;
+const index = String(order).padStart(2, '0');
+---
+
+<article
+	class="border border-border rounded-lg p-6 md:p-8 bg-bg-raised hover:border-border-strong transition-colors duration-200"
+	data-animate-item
+>
+	<div class="flex items-baseline gap-3 mb-1">
+		<span class="font-mono text-sm text-text-muted">{index}</span>
+		<h3 class="text-xl font-semibold">{title}</h3>
+	</div>
+	<p class="text-text-secondary mb-4">{role}</p>
+
+	<div class="flex flex-wrap gap-2 mb-6">
+		{
+			stack.map((item) => (
+				<span class="font-mono text-sm text-text-muted border border-border rounded-sm px-2 py-1">
+					{item}
+				</span>
+			))
+		}
+	</div>
+
+	<div class="border-t border-border pt-6 flex flex-col gap-5">
+		<div>
+			<p class="font-medium text-sm mb-1">Problema</p>
+			<p class="text-text-secondary text-sm">{problem}</p>
+		</div>
+		<div>
+			<p class="font-medium text-sm mb-1">Soluzione</p>
+			<p class="text-text-secondary text-sm">{solution}</p>
+		</div>
+		<div>
+			<p class="font-medium text-sm mb-1">Impatto</p>
+			<ul class="flex flex-col gap-1">
+				{
+					impact.map((point) => (
+						<li class="text-text-secondary text-sm pl-4 relative before:content-['—'] before:absolute before:left-0 before:text-text-muted">
+							{point}
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</article>
