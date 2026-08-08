@@ -1,5 +1,13 @@
 ---
-const stack = ['Laravel', 'React', 'Astro', 'MySQL', 'AWS'];
+import CircuitBackground from './CircuitBackground.astro';
+
+const stack = [
+	{ name: 'Laravel', color: '#FF2D20' },
+	{ name: 'React', color: '#61DAFB' },
+	{ name: 'Astro', color: '#FF5D01' },
+	{ name: 'MySQL', color: '#4479A1' },
+	{ name: 'AWS', color: '#FF9900' },
+];
 
 const socials = [
 	{
@@ -15,32 +23,66 @@ const socials = [
 ];
 ---
 
-<section class="min-h-[85vh] flex flex-col justify-center max-w-3xl mx-auto px-6 py-24">
-	<h1 class="text-4xl md:text-6xl font-semibold mb-2" data-animate-item>Alessio Micci</h1>
+<section class="relative overflow-hidden w-full min-h-[85vh] flex flex-col justify-center px-6 py-24">
+	<CircuitBackground />
 
-	<p class="text-lg md:text-xl text-text-secondary font-medium mb-6" data-animate-item>Full-Stack Developer</p>
+	<div class="relative z-10 max-w-3xl mx-auto w-full">
+		<h1 class="text-4xl md:text-6xl font-semibold mb-2" data-animate-item>Alessio Micci</h1>
 
-	<p class="text-lg text-text-secondary max-w-2xl mb-6" data-animate-item>Progetto e sviluppo applicazioni web custom ad alte prestazioni. Traduco logiche di business complesse in codice solido e architetture cloud scalabili.</p>
+		<p class="text-xl md:text-2xl text-text-secondary font-medium mb-6" data-animate-item>
+			Full-Stack Developer
+		</p>
 
-	<div class="flex items-center gap-5 mb-8" data-animate-item>
-		{
-			socials.map((social) => (
-				<a href={social.href} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary transition-colors duration-150">
-					<svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor" aria-hidden="true">
-						<path d={social.icon} />
-					</svg>
-					{social.label}
-				</a>
-			))
-		}
-	</div>
+		<p class="text-lg text-text-secondary max-w-2xl mb-6" data-animate-item>
+			Progetto e sviluppo applicazioni web custom ad alte prestazioni. Traduco logiche di
+			business complesse in codice solido e architetture cloud scalabili.
+		</p>
 
-	<div class="flex flex-wrap gap-2 mb-10" data-animate-item>
-		{stack.map((item) => <span class="font-mono text-sm text-text-muted border border-border rounded-sm px-2 py-1">{item}</span>)}
-	</div>
+		<div class="flex items-center gap-5 mb-8" data-animate-item>
+			{
+				socials.map((social) => (
+					<a
+						href={social.href}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary transition-colors duration-150"
+					>
+						<svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor" aria-hidden="true">
+							<path d={social.icon} />
+						</svg>
+						{social.label}
+					</a>
+				))
+			}
+		</div>
 
-	<div class="flex flex-wrap gap-4" data-animate-item>
-		<a href="/cv.pdf" download class="bg-accent text-bg px-5 py-2.5 rounded-md font-medium hover:bg-accent-hover transition-colors duration-150"> Scarica CV (PDF) </a>
-		<a href="#progetti" class="border border-border px-5 py-2.5 rounded-md font-medium hover:border-border-strong transition-colors duration-150"> Casi di Studio </a>
+		<div class="flex flex-wrap gap-2 mb-10" data-animate-item>
+			{
+				stack.map((item) => (
+					<span
+						class="font-mono text-sm rounded-sm px-2 py-1 border"
+						style={`border-color:${item.color}; color:${item.color}`}
+					>
+						{item.name}
+					</span>
+				))
+			}
+		</div>
+
+		<div class="flex flex-wrap gap-4" data-animate-item>
+			<a
+				href="/cv.pdf"
+				download
+				class="bg-accent text-bg px-5 py-2.5 rounded-md font-medium hover:bg-accent-hover transition-colors duration-150"
+			>
+				Scarica CV (PDF)
+			</a>
+			<a
+				href="#progetti"
+				class="border border-border px-5 py-2.5 rounded-md font-medium hover:border-border-strong transition-colors duration-150"
+			>
+				Casi di Studio
+			</a>
+		</div>
 	</div>
 </section>
