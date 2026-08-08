@@ -49,3 +49,20 @@
 		outline-offset: 2px;
 	}
 }
+
+/* Unlayered on purpose: must win over Tailwind's @theme layer regardless of layer order. */
+:root[data-theme="light"] {
+	--color-bg: #fafafa;
+	--color-bg-raised: #f4f4f5;
+	--color-bg-raised-2: #e4e4e7;
+	--color-border: #e4e4e7;
+	--color-border-strong: #d4d4d8;
+
+	--color-text-primary: #18181b;
+	--color-text-secondary: #52525b;
+	--color-text-muted: #71717a;
+
+	--color-accent: #0d9488;
+	--color-accent-hover: #0f766e;
+	--color-accent-muted: #99f6e4;
+}

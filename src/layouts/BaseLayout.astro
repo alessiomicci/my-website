@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import ThemeToggle from '../components/ThemeToggle.astro';
 
 interface Props {
 	title: string;
@@ -12,6 +13,13 @@ const { title, description = 'Full-Stack Developer. Progetto e sviluppo applicaz
 <!doctype html>
 <html lang="it">
 	<head>
+		<script is:inline>
+			(function () {
+				var stored = localStorage.getItem('theme');
+				var theme = stored === 'light' ? 'light' : 'dark';
+				document.documentElement.setAttribute('data-theme', theme);
+			})();
+		</script>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content={description} />
@@ -26,6 +34,7 @@ const { title, description = 'Full-Stack Developer. Progetto e sviluppo applicaz
 		<link rel="canonical" href={Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined} />
 	</head>
 	<body class="bg-bg text-text-primary font-sans antialiased">
+		<ThemeToggle />
 		<slot />
 		<script src="../scripts/animations.ts"></script>
 	</body>
