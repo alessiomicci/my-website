@@ -1,13 +1,15 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
 
 interface Props {
 	entry: CollectionEntry<'projects'>;
 }
 
 const { entry } = Astro.props;
-const { title, role, order, stack, problem, solution, impact } = entry.data;
+const { title, role, order, stack, websiteUrl, githubUrl, appStoreUrl, playStoreUrl } = entry.data;
 const index = String(order).padStart(2, '0');
+const { Content } = await render(entry);
 ---
 
 <article
@@ -20,7 +22,7 @@ const index = String(order).padStart(2, '0');
 	</div>
 	<p class="text-text-secondary mb-4">{role}</p>
 
-	<div class="flex flex-wrap gap-2 mb-6">
+	<div class="flex flex-wrap gap-2 mb-4">
 		{
 			stack.map((item) => (
 				<span class="font-mono text-sm text-text-muted border border-border rounded-sm px-2 py-1">
@@ -30,26 +32,54 @@ const index = String(order).padStart(2, '0');
 		}
 	</div>
 
-	<div class="border-t border-border pt-6 flex flex-col gap-5">
-		<div>
-			<p class="font-medium text-sm mb-1">Problema</p>
-			<p class="text-text-secondary text-sm">{problem}</p>
-		</div>
-		<div>
-			<p class="font-medium text-sm mb-1">Soluzione</p>
-			<p class="text-text-secondary text-sm">{solution}</p>
-		</div>
-		<div>
-			<p class="font-medium text-sm mb-1">Impatto</p>
-			<ul class="flex flex-col gap-1">
-				{
-					impact.map((point) => (
-						<li class="text-text-secondary text-sm pl-4 relative before:content-['—'] before:absolute before:left-0 before:text-text-muted">
-							{point}
-						</li>
-					))
-				}
-			</ul>
-		</div>
+	{
+		(websiteUrl || githubUrl || appStoreUrl || playStoreUrl) && (
+			<div class="flex flex-wrap gap-4 mb-6 font-mono text-xs">
+				{websiteUrl && (
+					<a
+						href={websiteUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-accent hover:text-accent-hover transition-colors duration-150"
+					>
+						Website →
+					</a>
+				)}
+				{githubUrl && (
+					<a
+						href={githubUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-accent hover:text-accent-hover transition-colors duration-150"
+					>
+						Source on GitHub →
+					</a>
+				)}
+				{appStoreUrl && (
+					<a
+						href={appStoreUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-accent hover:text-accent-hover transition-colors duration-150"
+					>
+						App Store →
+					</a>
+				)}
+				{playStoreUrl && (
+					<a
+						href={playStoreUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-accent hover:text-accent-hover transition-colors duration-150"
+					>
+						Google Play →
+					</a>
+				)}
+			</div>
+		)
+	}
+
+	<div class="border-t border-border pt-6 text-text-secondary text-sm leading-relaxed [&>p]:mb-3 [&>p:last-child]:mb-0">
+		<Content />
 	</div>
 </article>

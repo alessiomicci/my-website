@@ -1,12 +1,21 @@
 ---
-import CircuitBackground from './CircuitBackground.astro';
+import { siLaravel, siReact, siTypescript, siTailwindcss, siExpo, siMysql, siDocker, siCloudflare } from 'simple-icons';
+
+// Generic cloud glyph — AWS's  (Amazon requests it stay out),
+// so we pair their brand orange with a neutral cloud icon inown mark isn't in simple-iconsstead of a look-alike logo.
+const cloudIcon = 'M19 18H6.5a4.5 4.5 0 0 1-.4-8.98 5.5 5.5 0 0 1 10.6-2.31A4.5 4.5 0 0 1 19 18Z';
 
 const stack = [
-	{ name: 'Laravel', color: '#FF2D20' },
-	{ name: 'React', color: '#61DAFB' },
-	{ name: 'Astro', color: '#FF5D01' },
-	{ name: 'MySQL', color: '#4479A1' },
-	{ name: 'AWS', color: '#FF9900' },
+	{ name: 'Laravel', color: `#${siLaravel.hex}`, icon: siLaravel.path },
+	{ name: 'React', color: `#${siReact.hex}`, icon: siReact.path },
+	{ name: 'TypeScript', color: `#${siTypescript.hex}`, icon: siTypescript.path },
+	{ name: 'Tailwind', color: `#${siTailwindcss.hex}`, icon: siTailwindcss.path },
+	{ name: 'React Native', color: `#${siReact.hex}`, icon: siReact.path },
+	{ name: 'Expo', color: 'var(--color-text-primary)', icon: siExpo.path },
+	{ name: 'MySQL', color: `#${siMysql.hex}`, icon: siMysql.path },
+	{ name: 'AWS', color: '#FF9900', icon: cloudIcon },
+	{ name: 'Docker', color: `#${siDocker.hex}`, icon: siDocker.path },
+	{ name: 'Cloudflare', color: `#${siCloudflare.hex}`, icon: siCloudflare.path },
 ];
 
 const socials = [
@@ -24,29 +33,17 @@ const socials = [
 ---
 
 <section class="relative overflow-hidden w-full min-h-[85vh] flex flex-col justify-center px-6 py-24">
-	<CircuitBackground />
-
 	<div class="relative z-10 max-w-3xl mx-auto w-full">
 		<h1 class="text-4xl md:text-6xl font-semibold mb-2" data-animate-item>Alessio Micci</h1>
 
-		<p class="text-xl md:text-2xl text-text-secondary font-medium mb-6" data-animate-item>
-			Full-Stack Developer
-		</p>
+		<p class="text-xl md:text-2xl text-text-secondary font-medium mb-6" data-animate-item>Full-Stack Developer</p>
 
-		<p class="text-lg text-text-secondary max-w-2xl mb-6" data-animate-item>
-			Progetto e sviluppo applicazioni web custom ad alte prestazioni. Traduco logiche di
-			business complesse in codice solido e architetture cloud scalabili.
-		</p>
+		<p class="text-lg text-text-secondary max-w-2xl mb-6" data-animate-item>I design and build custom, high-performance web applications. I translate complex business logic into solid code and scalable cloud architectures.</p>
 
 		<div class="flex items-center gap-5 mb-8" data-animate-item>
 			{
 				socials.map((social) => (
-					<a
-						href={social.href}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary transition-colors duration-150"
-					>
+					<a href={social.href} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary transition-colors duration-150">
 						<svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor" aria-hidden="true">
 							<path d={social.icon} />
 						</svg>
@@ -56,13 +53,13 @@ const socials = [
 			}
 		</div>
 
-		<div class="flex flex-wrap gap-2 mb-10" data-animate-item>
+		<div class="grid grid-cols-2 gap-x-8 gap-y-2 max-w-sm mb-10" data-animate-item>
 			{
 				stack.map((item) => (
-					<span
-						class="font-mono text-sm rounded-sm px-2 py-1 border"
-						style={`border-color:${item.color}; color:${item.color}`}
-					>
+					<span class="inline-flex items-center gap-1.5 font-mono text-sm" style={`color:${item.color}`}>
+						<svg viewBox="0 0 24 24" class="w-3.5 h-3.5 shrink-0" fill="currentColor" aria-hidden="true">
+							<path d={item.icon} />
+						</svg>
 						{item.name}
 					</span>
 				))
@@ -70,19 +67,9 @@ const socials = [
 		</div>
 
 		<div class="flex flex-wrap gap-4" data-animate-item>
-			<a
-				href="/cv.pdf"
-				download
-				class="bg-accent text-bg px-5 py-2.5 rounded-md font-medium hover:bg-accent-hover transition-colors duration-150"
-			>
-				Scarica CV (PDF)
-			</a>
-			<a
-				href="#progetti"
-				class="border border-border px-5 py-2.5 rounded-md font-medium hover:border-border-strong transition-colors duration-150"
-			>
-				Casi di Studio
-			</a>
+			<a href="mailto:alessio.micci.41@gmail.com" class="bg-accent text-bg px-5 py-2.5 rounded-md font-medium hover:bg-accent-hover transition-colors duration-150"> Contact Me </a>
+			<a href="/cv.pdf" download class="border border-border px-5 py-2.5 rounded-md font-medium hover:border-border-strong transition-colors duration-150"> Download CV</a>
+			<a href="#work" class="border border-border px-5 py-2.5 rounded-md font-medium hover:border-border-strong transition-colors duration-150"> My Works </a>
 		</div>
 	</div>
 </section>

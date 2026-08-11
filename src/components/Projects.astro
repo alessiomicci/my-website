@@ -2,17 +2,12 @@
 import { getCollection } from 'astro:content';
 import ProjectCard from './ProjectCard.astro';
 
-const projects = (await getCollection('projects'))
-	.filter((p) => p.data.featured)
-	.sort((a, b) => a.data.order - b.data.order);
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<section id="progetti" class="max-w-3xl mx-auto px-6 py-24 md:py-32 border-t border-border">
-	<h2 class="text-2xl md:text-3xl font-semibold mb-2" data-animate-item>Casi di Studio</h2>
-	<p class="text-text-secondary mb-12 max-w-xl" data-animate-item>
-		Progetti selezionati, con enfasi su problema tecnico, soluzione architetturale e impatto
-		misurabile.
-	</p>
+<section id="work" class="max-w-3xl mx-auto px-6 py-24 md:py-32 border-t border-border">
+	<h2 class="text-2xl md:text-3xl font-semibold mb-2" data-animate-item>My Works</h2>
+	<p class="text-text-secondary mb-12 max-w-lg" data-animate-item>A selection of the work I've done, some public or open-source code, others private under client NDAs.</p>
 	<div class="flex flex-col gap-6">
 		{projects.map((entry) => <ProjectCard entry={entry} />)}
 	</div>

@@ -9,10 +9,10 @@ const projects = defineCollection({
 		order: z.number(),
 		date: z.coerce.date(),
 		stack: z.array(z.string()),
-		problem: z.string(),
-		solution: z.string(),
-		impact: z.array(z.string()),
-		featured: z.boolean().default(true),
+		websiteUrl: z.union([z.string().url(), z.literal('')]).default(''),
+		githubUrl: z.union([z.string().url(), z.literal('')]).default(''),
+		appStoreUrl: z.union([z.string().url(), z.literal('')]).default(''),
+		playStoreUrl: z.union([z.string().url(), z.literal('')]).default(''),
 	}),
 });
 

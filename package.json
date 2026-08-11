@@ -18,6 +18,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^5.18.2",
     "gsap": "^3.15.0",
+    "simple-icons": "^16.28.0",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
