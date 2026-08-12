@@ -1,22 +1,39 @@
 ---
-import { siLaravel, siReact, siTypescript, siTailwindcss, siExpo, siMysql, siDocker, siCloudflare } from 'simple-icons';
+import { siLaravel, siReact, siTypescript, siTailwindcss, siExpo, siMysql, siDocker, siCloudflare, siGit, siLinux, siPostman, siClaudecode } from 'simple-icons';
+import HeroBackground from './HeroBackground.astro';
 
 // Generic cloud glyph — AWS's  (Amazon requests it stay out),
 // so we pair their brand orange with a neutral cloud icon inown mark isn't in simple-iconsstead of a look-alike logo.
 const cloudIcon = 'M19 18H6.5a4.5 4.5 0 0 1-.4-8.98 5.5 5.5 0 0 1 10.6-2.31A4.5 4.5 0 0 1 19 18Z';
 
-const stack = [
+// Generic ">_" prompt glyph — Codex has no standalone logo in simple-icons.
+const terminalIcon = 'M8 5 14 12 8 19 6 17 10 12 6 7Z M16 17H20V19H16Z';
+
+const stackCol1 = [
 	{ name: 'Laravel', color: `#${siLaravel.hex}`, icon: siLaravel.path },
 	{ name: 'React', color: `#${siReact.hex}`, icon: siReact.path },
 	{ name: 'TypeScript', color: `#${siTypescript.hex}`, icon: siTypescript.path },
 	{ name: 'Tailwind', color: `#${siTailwindcss.hex}`, icon: siTailwindcss.path },
+	{ name: 'MySQL', color: `#${siMysql.hex}`, icon: siMysql.path },
+];
+
+const stackCol2 = [
 	{ name: 'React Native', color: `#${siReact.hex}`, icon: siReact.path },
 	{ name: 'Expo', color: 'var(--color-text-primary)', icon: siExpo.path },
-	{ name: 'MySQL', color: `#${siMysql.hex}`, icon: siMysql.path },
-	{ name: 'AWS', color: '#FF9900', icon: cloudIcon },
 	{ name: 'Docker', color: `#${siDocker.hex}`, icon: siDocker.path },
+	{ name: 'AWS', color: '#FF9900', icon: cloudIcon },
 	{ name: 'Cloudflare', color: `#${siCloudflare.hex}`, icon: siCloudflare.path },
 ];
+
+const stackCol3 = [
+	{ name: 'Git', color: `#${siGit.hex}`, icon: siGit.path },
+	{ name: 'Linux', color: `#${siLinux.hex}`, icon: siLinux.path },
+	{ name: 'Postman', color: `#${siPostman.hex}`, icon: siPostman.path },
+	{ name: 'Claude Code', color: `#${siClaudecode.hex}`, icon: siClaudecode.path },
+	{ name: 'Codex', color: 'var(--color-text-secondary)', icon: terminalIcon },
+];
+
+const stackColumns = [stackCol1, stackCol2, stackCol3];
 
 const socials = [
 	{
@@ -33,6 +50,8 @@ const socials = [
 ---
 
 <section class="relative overflow-hidden w-full min-h-[85vh] flex flex-col justify-center px-6 py-24">
+	<HeroBackground />
+
 	<div class="relative z-10 max-w-3xl mx-auto w-full">
 		<h1 class="text-4xl md:text-6xl font-semibold mb-2" data-animate-item>Alessio Micci</h1>
 
@@ -40,7 +59,7 @@ const socials = [
 
 		<p class="text-lg text-text-secondary max-w-2xl mb-6" data-animate-item>I design and build custom, high-performance web applications. I translate complex business logic into solid code and scalable cloud architectures.</p>
 
-		<div class="flex items-center gap-5 mb-8" data-animate-item>
+		<div class="flex items-center gap-5 mb-10" data-animate-item>
 			{
 				socials.map((social) => (
 					<a href={social.href} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary transition-colors duration-150">
@@ -53,15 +72,19 @@ const socials = [
 			}
 		</div>
 
-		<div class="grid grid-cols-2 gap-x-8 gap-y-2 max-w-sm mb-10" data-animate-item>
+		<div class="flex flex-wrap gap-x-12 gap-y-2 max-w-lg mb-14" data-animate-item>
 			{
-				stack.map((item) => (
-					<span class="inline-flex items-center gap-1.5 font-mono text-sm" style={`color:${item.color}`}>
-						<svg viewBox="0 0 24 24" class="w-3.5 h-3.5 shrink-0" fill="currentColor" aria-hidden="true">
-							<path d={item.icon} />
-						</svg>
-						{item.name}
-					</span>
+				stackColumns.map((column) => (
+					<div class="flex flex-col gap-3">
+						{column.map((item) => (
+							<span class="inline-flex items-center gap-1.5 font-mono text-sm" style={`color:${item.color}`}>
+								<svg viewBox="0 0 24 24" class="w-3.5 h-3.5 shrink-0" fill="currentColor" aria-hidden="true">
+									<path d={item.icon} />
+								</svg>
+								{item.name}
+							</span>
+						))}
+					</div>
 				))
 			}
 		</div>

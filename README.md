@@ -1,43 +1,35 @@
-# Astro Starter Kit: Minimal
+# alessiomicci.it
 
-```sh
-npm create astro@latest -- --template minimal
-```
+This is my personal portfolio. Built with Astro, Tailwind CSS, and GSAP, focused on a clean, minimal, engineering-first presentation rather than a typical agency/portfolio look.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Stack
 
-## 🚀 Project Structure
+- **[Astro](https://astro.build)** — static site generation, content collections
+- **Tailwind CSS** — CSS-first config via `@tailwindcss/vite`, no `tailwind.config.js`
+- **GSAP + ScrollTrigger** — subtle scroll-in animations (`[data-animate-item]` elements)
+- **[simple-icons](https://simpleicons.org)** — accurate, official brand icons/colors for the tech stack badges in the Hero
+- **MDX** — each project in "My Works" is a content-collection entry
 
-Inside of your Astro project, you'll see the following folders and files:
+## Project structure
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+src/
+├── components/
+│   ├── Hero.astro            # name, role, tech stack, CTAs
+│   ├── HeroBackground.astro  # subtle animated dot-grid background
+│   ├── Projects.astro        # "My Works" section, lists all projects
+│   ├── ProjectCard.astro     # single project card (renders MDX body + optional links)
+│   ├── Footer.astro          # contact section
+│   └── ThemeToggle.astro     # light/dark toggle (defaults to dark)
+├── content/
+│   └── projects/*.mdx        # one file per project, see below
+├── content.config.ts         # Zod schema for the projects collection
+├── layouts/BaseLayout.astro  # <head>, theme init script, fonts
+├── scripts/animations.ts     # GSAP ScrollTrigger init
+├── styles/global.css         # Tailwind v4 @theme tokens (dark + light palettes)
+└── pages/index.astro         # assembles the page
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Notes
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Theme defaults to dark on first visit regardless of OS preference; the user's choice is then persisted in `localStorage`.
