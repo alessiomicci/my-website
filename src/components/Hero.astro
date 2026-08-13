@@ -1,5 +1,5 @@
 ---
-import { siLaravel, siReact, siTypescript, siTailwindcss, siExpo, siMysql, siDocker, siCloudflare, siGit, siLinux, siPostman, siClaudecode } from 'simple-icons';
+import { siLaravel, siReact, siTypescript, siTailwindcss, siExpo, siMysql, siDocker, siCloudflare, siGit, siLinux, siPostman, siClaudecode, siN8n, siApache, siNginx, siPostgresql, siPhp } from 'simple-icons';
 import HeroBackground from './HeroBackground.astro';
 
 // Generic cloud glyph — AWS's  (Amazon requests it stay out),
@@ -10,30 +10,38 @@ const cloudIcon = 'M19 18H6.5a4.5 4.5 0 0 1-.4-8.98 5.5 5.5 0 0 1 10.6-2.31A4.5 
 const terminalIcon = 'M8 5 14 12 8 19 6 17 10 12 6 7Z M16 17H20V19H16Z';
 
 const stackCol1 = [
+	{ name: 'PHP', color: `#${siPhp.hex}`, icon: siPhp.path },
 	{ name: 'Laravel', color: `#${siLaravel.hex}`, icon: siLaravel.path },
 	{ name: 'React', color: `#${siReact.hex}`, icon: siReact.path },
 	{ name: 'TypeScript', color: `#${siTypescript.hex}`, icon: siTypescript.path },
 	{ name: 'Tailwind', color: `#${siTailwindcss.hex}`, icon: siTailwindcss.path },
-	{ name: 'MySQL', color: `#${siMysql.hex}`, icon: siMysql.path },
 ];
 
 const stackCol2 = [
 	{ name: 'React Native', color: `#${siReact.hex}`, icon: siReact.path },
 	{ name: 'Expo', color: 'var(--color-text-primary)', icon: siExpo.path },
+	{ name: 'Apache', color: `#${siApache.hex}`, icon: siApache.path },
+	{ name: 'Nginx', color: `#${siNginx.hex}`, icon: siNginx.path },
 	{ name: 'Docker', color: `#${siDocker.hex}`, icon: siDocker.path },
+];
+
+const stackCol3 = [
+	{ name: 'MySQL', color: `#${siMysql.hex}`, icon: siMysql.path },
+	{ name: 'PostgreSQL', color: `#${siPostgresql.hex}`, icon: siPostgresql.path },
+	{ name: 'Postman', color: `#${siPostman.hex}`, icon: siPostman.path },
 	{ name: 'AWS', color: '#FF9900', icon: cloudIcon },
 	{ name: 'Cloudflare', color: `#${siCloudflare.hex}`, icon: siCloudflare.path },
 ];
 
-const stackCol3 = [
+const stackCol4 = [
 	{ name: 'Git', color: `#${siGit.hex}`, icon: siGit.path },
 	{ name: 'Linux', color: `#${siLinux.hex}`, icon: siLinux.path },
-	{ name: 'Postman', color: `#${siPostman.hex}`, icon: siPostman.path },
 	{ name: 'Claude Code', color: `#${siClaudecode.hex}`, icon: siClaudecode.path },
 	{ name: 'Codex', color: 'var(--color-text-secondary)', icon: terminalIcon },
+	{ name: 'n8n', color: `#${siN8n.hex}`, icon: siN8n.path },
 ];
 
-const stackColumns = [stackCol1, stackCol2, stackCol3];
+const stackColumns = [stackCol1, stackCol2, stackCol3, stackCol4];
 
 const socials = [
 	{
@@ -43,7 +51,7 @@ const socials = [
 	},
 	{
 		label: 'LinkedIn',
-		href: 'https://www.linkedin.com/in/alessio-micci-8a4016375/',
+		href: 'https://www.linkedin.com/in/alessio-micci/',
 		icon: 'M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z',
 	},
 ];
@@ -72,7 +80,7 @@ const socials = [
 			}
 		</div>
 
-		<div class="flex flex-wrap gap-x-12 gap-y-2 max-w-lg mb-14" data-animate-item>
+		<div class="flex flex-wrap gap-x-8 gap-y-2 max-w-2xl mb-14" data-animate-item>
 			{
 				stackColumns.map((column) => (
 					<div class="flex flex-col gap-3">

@@ -16,9 +16,10 @@ This is my personal portfolio. Built with Astro, Tailwind CSS, and GSAP, focused
 src/
 ├── components/
 │   ├── Hero.astro            # name, role, tech stack, CTAs
-│   ├── HeroBackground.astro  # subtle animated dot-grid background
+│   ├── HeroBackground.astro  # subtle static dot-grid background
 │   ├── Projects.astro        # "My Works" section, lists all projects
 │   ├── ProjectCard.astro     # single project card (renders MDX body + optional links)
+│   ├── Workflow.astro        # "Working Method" section
 │   ├── Footer.astro          # contact section
 │   └── ThemeToggle.astro     # light/dark toggle (defaults to dark)
 ├── content/
