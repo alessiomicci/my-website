@@ -1,0 +1,34 @@
+---
+const items = [
+	{
+		label: 'Business-Driven Engineering',
+		desc: 'I analyze business goals and constraints before coding, balancing execution speed, architecture, and infrastructure costs to deliver immediate, concrete value without creating unnecessary technical debt.',
+	},
+	{
+		label: 'Maintainable Software Design',
+		desc: 'I build robust web applications using clean code bases designed to adapt smoothly as business requirements grow.',
+	},
+	{
+		label: 'AI-Driven Automation',
+		desc: 'I integrate AI models and custom agents into development cycles and internal operations to accelerate prototyping, debugging, and routine tasks, significantly boosting overall productivity.',
+	},
+	{
+		label: 'Reliable DevOps',
+		desc: 'I treat system stability as a core feature—using Docker for isolated environments, automating deployment flows via Shell scripts and Git-hooks, and ensuring predictable releases.',
+	},
+];
+---
+
+<section id="method" class="max-w-3xl mx-auto px-6 py-24 md:py-32 border-t border-border">
+	<h2 class="text-2xl md:text-3xl font-semibold mb-12" data-animate-item>Working Method</h2>
+	<dl class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+		{
+			items.map((item) => (
+				<div data-animate-item>
+					<dt class="font-mono text-accent mb-1">&gt; {item.label}</dt>
+					<dd class="text-text-secondary text-sm">{item.desc}</dd>
+				</div>
+			))
+		}
+	</dl>
+</section>
