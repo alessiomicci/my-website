@@ -1,26 +1,14 @@
 ---
 const items = [
-	{
-		label: 'Business-Driven Engineering',
-		desc: 'I analyze business goals and constraints before coding, balancing execution speed, architecture, and infrastructure costs to deliver immediate, concrete value without creating unnecessary technical debt.',
-	},
-	{
-		label: 'Maintainable Software Design',
-		desc: 'I build robust web applications using clean code bases designed to adapt smoothly as business requirements grow.',
-	},
-	{
-		label: 'AI-Driven Automation',
-		desc: 'I integrate AI models and custom agents into development cycles and internal operations to accelerate prototyping, debugging, and routine tasks, significantly boosting overall productivity.',
-	},
-	{
-		label: 'Reliable DevOps',
-		desc: 'I treat system stability as a core feature—using Docker for isolated environments, automating deployment flows via Shell scripts and Git-hooks, and ensuring predictable releases.',
-	},
+{ label: '01 / Discover & clarify', desc: 'I start with client conversations, business requirements and constraints. Structured AI-assisted interviews help surface assumptions, edge cases and open questions before implementation.' },
+{ label: '02 / Build shared context', desc: 'I maintain evolving product documentation, architecture decisions, feature status and meeting summaries alongside code, so agents work with consistent project knowledge.' },
+{ label: '03 / Implement incrementally', desc: 'I guide AI coding agents one feature at a time across relevant repositories, reviewing technical choices and keeping implementation aligned with requirements.' },
+{ label: '04 / Verify & maintain', desc: 'I check delivered behavior, investigate issues and use AI-assisted code reviews. I remain responsible for understanding the system and its maintainability in production.' },
 ];
 ---
 
 <section id="method" class="max-w-3xl mx-auto px-6 py-24 md:py-32 border-t border-border">
-	<h2 class="text-2xl md:text-3xl font-semibold mb-12" data-animate-item>Working Method</h2>
+	<h2 class="text-2xl md:text-3xl font-semibold mb-12" data-animate-item>How I Build Software</h2>
 	<dl class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
 		{
 			items.map((item) => (
